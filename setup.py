@@ -64,8 +64,11 @@ def read_version_tag():
     return None
 
 def read_version_from_json_file():
-    with open(os.path.join(os.path.dirname(__file__), "pepper", "version.json")) as f:
-        return json.load(f)['version']
+    try:
+        with open(os.path.join(os.path.dirname(__file__), "pepper", "version.json")) as f:
+            return json.load(f)['version']
+    except Exception:
+        return None
 
 def parse_version_tag(tag):
     '''
